@@ -22,34 +22,12 @@ module divot() {
     }
     // diagonal cut
     rotate([0,-5,0]) {
-      // translate([-55,-20,-10]) {
       translate([-55,-21,-10]) {
         cube([45,65,65]);
       }
     }
   }
 }
-
-// module biscuit() {
-
-//   lower_width = 4.7;
-//   upper_width = 5.3;
-//   upper_height = 21.0;
-//   lower_height = 21.0;
-//   // thickness = 4.2;
-//   // thickness = 3.2;
-//   thickness = 2.2;
-
-//   M = [ [ 1, 0.2, 0, 0 ],
-//          [ 0, 1, -0.2, 0 ],  // The "0.7" is the skew value; pushed along the y axis
-//          [ 0, 0, 1, 0 ],
-//          [ 0, 0, 0, 1 ] ] ;
-//    multmatrix(M) {
-//     union() {
-//       cube([lower_height, lower_width, thickness], center=true);
-//     }
-//   }
-// }
 
 module biscuit() {
 
@@ -74,7 +52,8 @@ module whole_thing() {
               translate([0,-2.5,0]) divot();
             }
           }
-          translate([-80,-10,0]) cube([steven,steven*2,35]);
+          // point cut
+          // translate([-90,-20,0]) rotate([0,0,-5]) cube([steven,steven*2,35]);
         }
 
         translate([-6.5,38.5,25.5]) rotate([90,81,0]) biscuit();
@@ -83,9 +62,25 @@ module whole_thing() {
       translate([-3,41,10]) rotate([90,0,0]) cylinder(d=2, h=15, $fn=fn);
       translate([-5.5,41,23]) rotate([90,0,0]) cylinder(d=2, h=15, $fn=fn);
     }
-    translate([-45,9,0]) rotate([0,0,50]) cube([50,10,35]);
-    translate([-41,33,17]) rotate([90,0,50]) cylinder(d=20, h=25, $fn=fn);
+
+    // outside cut
+    // translate([-45,9,0]) rotate([0,0,50]) cube([50,10,35]);
+    
+    // big hole 1
+    translate([-24,36,17]) rotate([90,0,30]) cylinder(d=20, h=25, $fn=fn);
+
+    //big hole 2
+    translate([-45,20,17]) rotate([90,0,50]) cylinder(d=20, h=25, $fn=fn);
+
+    // cuff v cut top
+    translate([-45,-24,10]) rotate([0,18,75]) cube([20,20,40]);
+
+    // cuff v cut bottom
+    translate([-45,-17,-10]) rotate([0,-16,75]) cube([20,20,40]);
   }
 }
 
-mirror([0,1,0]) whole_thing();
+ whole_thing();
+
+// rotate([0,0,0]) translate([0,-25,0]) whole_thing();
+// rotate([0,0,60]) translate([0,25,0]) mirror([0,1,0]) whole_thing();
