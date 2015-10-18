@@ -5,7 +5,7 @@ module main() {
   difference() {
     difference() {
       cylinder(r=steven, h=35, $fn=fn);
-      translate([0,-10,0]) cylinder(r=steven, h=35, $fn=fn);
+      translate([0,-8,0]) cylinder(r=steven, h=35, $fn=fn);
     }
     translate([0,-10,0]) cube([45,55,35]);
   }
@@ -49,15 +49,15 @@ module whole_thing() {
           scale([1.25,1.0,1.0]) {
             difference() {
               main();
-              translate([0,-2.5,0]) divot();
+              translate([0,-1.5,0]) divot();
             }
           }
           // point cut
           // translate([-90,-20,0]) rotate([0,0,-5]) cube([steven,steven*2,35]);
         }
 
-        translate([-6.5,38.5,25.5]) rotate([90,81,0]) biscuit();
-        translate([-7.0,33.5,25.5]) rotate([90,81,0]) biscuit();
+        translate([-6.5,39.5,25.5]) rotate([90,81,0]) biscuit();
+        translate([-7.0,34.5,25.5]) rotate([90,81,0]) biscuit();
       }
       translate([-3,41,10]) rotate([90,0,0]) cylinder(d=2, h=15, $fn=fn);
       translate([-5.5,41,23]) rotate([90,0,0]) cylinder(d=2, h=15, $fn=fn);
@@ -80,7 +80,8 @@ module whole_thing() {
   }
 }
 
- whole_thing();
+ // whole_thing();
+ mirror([0,1,0]) whole_thing();
 
 // rotate([0,0,0]) translate([0,-25,0]) whole_thing();
 // rotate([0,0,60]) translate([0,25,0]) mirror([0,1,0]) whole_thing();
