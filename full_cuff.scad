@@ -2,7 +2,7 @@
 ellipse_1 = 17.8; // 17.3;
 ellipse_2 = 24.3; // 23.8;
 
-height=2; // 9
+height=9; // 9
 
 module core_ellipse(wall_thickness=3) {
   scale([1,ellipse_2/ellipse_1,1]) {
