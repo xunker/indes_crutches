@@ -88,8 +88,15 @@ module opening_side() {
     // cut off ellipses at middle
     translate([-41,0,0]) cube([80,100,cutout_height], center=true);
 
-    // cuff from opening
-    translate([57,0,0]) cube([5,2,height,], center=true);
+    // cuff front opening
+    translate([60,0,0]) {
+      rotate([0,270,0]) linear_extrude(height=10) polygon(points=[[0,0],[20,-3.5],[20,3.5]]);
+      translate([0,0,13])
+        rotate([0,270,0]) linear_extrude(height=10) polygon(points=[[0,0],[5,-5],[5,5]]);
+        translate([0,0,-13])
+          rotate([0,270,0]) linear_extrude(height=10) polygon(points=[[0,0],[-5,-2],[-5,2]]);
+      cube([10,2,height,], center=true);
+    }
   }
 }
 
@@ -114,8 +121,8 @@ module full_cuff() {
   }
 }
 
-/*support_side();
-opening_side();*/
+/*support_side();*/
+/*opening_side();*/
 /*intersection() {*/
   full_cuff();
   /*translate([-85,-30,-20]) cube([50,60,10]);*/
