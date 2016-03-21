@@ -80,7 +80,7 @@ module opening_side() {
       }
 
       // inner
-      scale([((id_2/id_1)*1.23),1,1]) {
+      scale([1.23,1,1]) {
         cylinder(h=cutout_height, d=id_1, center=true, $fn=cuff_facets);
       }
 
