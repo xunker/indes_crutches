@@ -3,20 +3,21 @@ cutout_height = height + 1;
 
 // for opening side
 od_1 = 100.0;
-id_1 = 90; // guess
+id_1 = 90;
 
 // for support side
-od_2 = 150; // guess
-id_2 = 90; // guess
+od_2 = 150;
+id_2 = 90;
 
 screw_mount_width = 30;
 
 screw_x_offset = -76;
 
+cuff_facets = 50;
+
 module cutouts() {
-  // ellipsoidal was measured as 23.8mm by 17.3
-  ellipse_1 = 17.8; // 17.3;
-  ellipse_2 = 24.3; // 23.8;
+  ellipse_1 = 17.8;
+  ellipse_2 = 24.3;
 
   // center, for handle
   translate([-60.2,0,0])
@@ -28,7 +29,7 @@ module cutouts() {
     translate([-39,35,0])
       rotate([0,0,120])
         scale([0.35,2,1])
-          cylinder(h=cutout_height, d=ellipse_1, center=true, $fn=64);
+          cylinder(h=cutout_height, d=ellipse_1, center=true, $fn=8);
   }
 
   cutout();
@@ -43,12 +44,12 @@ module support_side() {
         difference() {
           // outer
           scale([od_2/od_1,1,1]) {
-            cylinder(h=height, d=od_1, center=true, $fn=50);
+            cylinder(h=height, d=od_1, center=true, $fn=cuff_facets);
           }
 
           // inner
           scale([id_2/id_1,1,1]) {
-            cylinder(h=cutout_height, d=id_1, center=true, $fn=50);
+            cylinder(h=cutout_height, d=id_1, center=true, $fn=cuff_facets);
           }
         }
         // cut off ellipses at middle
@@ -75,12 +76,12 @@ module opening_side() {
     difference() {
       // outer
       scale([1.17,1,1]) {
-        cylinder(h=height, d=od_1, center=true, $fn=50);
+        cylinder(h=height, d=od_1, center=true, $fn=cuff_facets);
       }
 
       // inner
       scale([((id_2/id_1)*1.23),1,1]) {
-        cylinder(h=cutout_height, d=id_1, center=true, $fn=50);
+        cylinder(h=cutout_height, d=id_1, center=true, $fn=cuff_facets);
       }
 
     }
@@ -97,7 +98,6 @@ module screw_hole() {
     cylinder(d=5.5, h=screw_mount_width, center=true, $fn=10);
   }
 }
-
 
 module full_cuff() {
   difference() {
