@@ -9,9 +9,9 @@ id_1 = 90;
 od_2 = 150;
 id_2 = 90;
 
-screw_mount_width = 30;
+screw_mount_width = 28;
 
-screw_x_offset = -76;
+screw_x_offset = -77;
 
 cuff_facets = 50;
 
@@ -123,7 +123,8 @@ module full_cuff() {
 
 /*support_side();*/
 /*opening_side();*/
-/*intersection() {*/
+// intersection() {
   full_cuff();
-  /*translate([-85,-30,-20]) cube([50,60,10]);*/
-/*}*/
+  // translate([-85,-25,-14]) cube([50,50,8]);
+  // translate([-85,-50,-18]) cube([200,200,2]);
+// }
