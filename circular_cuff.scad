@@ -35,12 +35,13 @@ module cutouts() {
         scale([0.35,1.25,1])
           cylinder(h=cutout_height, d=ellipse_1, center=true, $fn=8);*/
     hull() {
+      facets = 8;
       translate([-37,37,0])
-        cylinder(h=cutout_height, d=5, center=true, $fn=16);
+        cylinder(h=cutout_height, d=5, center=true, $fn=facets);
       translate([-47,33,0])
-        cylinder(h=cutout_height, d=5, center=true, $fn=16);
+        cylinder(h=cutout_height, d=5, center=true, $fn=facets);
       translate([-54,20,0])
-        cylinder(h=cutout_height, d=15, center=true, $fn=16);
+        cylinder(h=cutout_height, d=15, center=true, $fn=facets);
     }
   }
 
