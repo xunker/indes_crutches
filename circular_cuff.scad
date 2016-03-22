@@ -9,7 +9,7 @@ id_1 = 90;
 od_2 = 150;
 id_2 = 90;
 
-screw_mount_width = 28;
+screw_mount_width = 26;
 
 screw_x_offset = -77;
 
