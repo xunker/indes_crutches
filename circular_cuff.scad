@@ -26,10 +26,22 @@ module cutouts() {
         cylinder(h=cutout_height, d=ellipse_1, center=true, $fn=64);
 
   module cutout() {
-    translate([-39,35,0])
+    /*translate([-37,37,0])
       rotate([0,0,120])
-        scale([0.35,2,1])
+        scale([0.35,1.5,1])
           cylinder(h=cutout_height, d=ellipse_1, center=true, $fn=8);
+    translate([-48,27,0])
+      rotate([0,0,150])
+        scale([0.35,1.25,1])
+          cylinder(h=cutout_height, d=ellipse_1, center=true, $fn=8);*/
+    hull() {
+      translate([-37,37,0])
+        cylinder(h=cutout_height, d=5, center=true, $fn=16);
+      translate([-47,33,0])
+        cylinder(h=cutout_height, d=5, center=true, $fn=16);
+      translate([-54,20,0])
+        cylinder(h=cutout_height, d=15, center=true, $fn=16);
+    }
   }
 
   cutout();
@@ -48,7 +60,7 @@ module support_side() {
           }
 
           // inner
-          scale([id_2/id_1,1,1]) {
+          scale([id_2/id_1,1.03,1]) {
             cylinder(h=cutout_height, d=id_1, center=true, $fn=cuff_facets);
           }
         }
@@ -80,7 +92,7 @@ module opening_side() {
       }
 
       // inner
-      scale([1.23,1,1]) {
+      scale([1.25,1.03,1]) {
         cylinder(h=cutout_height, d=id_1, center=true, $fn=cuff_facets);
       }
 
@@ -90,11 +102,11 @@ module opening_side() {
 
     // cuff front opening
     translate([60,0,0]) {
-      rotate([0,270,0]) linear_extrude(height=10) polygon(points=[[0,0],[20,-3.5],[20,3.5]]);
+      rotate([0,270,0]) linear_extrude(height=10) polygon(points=[[0,0],[20,-7.5],[20,7.5]]);
       translate([0,0,13])
-        rotate([0,270,0]) linear_extrude(height=10) polygon(points=[[0,0],[5,-5],[5,5]]);
+        rotate([0,270,0]) linear_extrude(height=10) polygon(points=[[0,0],[5,-10],[5,10]]);
         translate([0,0,-13])
-          rotate([0,270,0]) linear_extrude(height=10) polygon(points=[[0,0],[-5,-2],[-5,2]]);
+          rotate([0,270,0]) linear_extrude(height=10) polygon(points=[[0,0],[-5,-5],[-5,5]]);
       cube([10,2,height,], center=true);
     }
   }
