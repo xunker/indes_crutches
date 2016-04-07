@@ -16,7 +16,7 @@ screw_x_offset = -77;
 cuff_facets = 50;
 
 module cutouts() {
-  ellipse_1 = 17.8;
+  ellipse_1 = 17.5; // 17.8
   ellipse_2 = 24.3;
 
   // center, for handle
@@ -61,7 +61,7 @@ module support_side() {
           }
 
           // inner
-          scale([id_2/id_1,1.03,1]) {
+          scale([id_2/id_1,1.01,1]) {
             cylinder(h=cutout_height, d=id_1, center=true, $fn=cuff_facets);
           }
         }
@@ -93,8 +93,10 @@ module opening_side() {
       }
 
       // inner
-      scale([1.25,1.03,1]) {
-        cylinder(h=cutout_height, d=id_1, center=true, $fn=cuff_facets);
+      translate([-0.5,0,0]) {
+        scale([1.25,1.01,1]) {
+          cylinder(h=cutout_height, d=id_1, center=true, $fn=cuff_facets);
+        }
       }
 
     }
@@ -108,7 +110,7 @@ module opening_side() {
         rotate([0,270,0]) linear_extrude(height=10) polygon(points=[[0,0],[5,-10],[5,10]]);
         translate([0,0,-13])
           rotate([0,270,0]) linear_extrude(height=10) polygon(points=[[0,0],[-5,-5],[-5,5]]);
-      cube([10,2,height,], center=true);
+      cube([10,1,height,], center=true);
     }
   }
 }
